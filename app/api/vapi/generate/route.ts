@@ -6,6 +6,14 @@ import { getRandomInterviewCover } from "@/lib/utils";
 
 export async function POST(request: Request) {
   const { type, role, level, techstack, amount, userid } = await request.json();
+  console.log("Received in API:", {
+    userid,
+    type,
+    role,
+    level,
+    techstack,
+    amount,
+  });
 
   try {
     const { text: questions } = await generateText({
@@ -26,9 +34,9 @@ export async function POST(request: Request) {
     });
 
     const interview = {
-      role: role,
-      type: type,
-      level: level,
+      role,
+      type,
+      level,
       techstack: techstack.split(","),
       questions: JSON.parse(questions),
       userId: userid,
@@ -37,7 +45,9 @@ export async function POST(request: Request) {
       createdAt: new Date().toISOString(),
     };
 
-    await db.collection("interviews").add(interview);
+     const result = await db.collection("interviews").add(interview);
+     console.log("result: ", result);
+     
 
     return Response.json({ success: true }, { status: 200 });
   } catch (error) {
