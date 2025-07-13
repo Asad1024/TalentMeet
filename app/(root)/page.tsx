@@ -12,10 +12,10 @@ const Page = () => {
         <div className="flex flex-col gap-6 max-w-lg">
           <h2>Get Intevire-Ready with AI-Powered Practice & Feedback</h2>
           <p className="text-lg">
-            Practice on real inteview questions & get instant feeback
+            Practice on real interview questions & get instant feeback
           </p>
           <Button asChild className="btn-primary max-sm:w-full">
-            <Link href="/inteview">Start an inteview</Link>
+            <Link href="/interview">Start an interview</Link>
           </Button>
         </div>
         <Image
@@ -32,11 +32,11 @@ const Page = () => {
           {dummyInterviews.map((interview) => (
             <InterviewCard {...interview} key={interview.id} />
           ))}
-          {/* <p>You haven't taken any inteviews yet</p> */}
+          {/* <p>You haven't taken any interviews yet</p> */}
         </div>
       </section>
       <section className="flex flex-col gap-6 mt-8">
-        <h2>Take an Inteview</h2>
+        <h2>Take an Interview</h2>
         <div className="interviews-section">
           {dummyInterviews.map((interview) => (
             <InterviewCard {...interview} key={interview.id} />
